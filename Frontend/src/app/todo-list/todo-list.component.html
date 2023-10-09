@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo-List Application</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        .table {
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+        }
+
+        th, td {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="card">
+            <h1 class="mb-4">Todo-List Application</h1>
+            <form>
+                <div class="form-group">
+                    <label for="todo">Todo-list</label>
+                    <input type="text" [(ngModel)]="todo" [ngModelOptions]="{standalone: true}" class="form-control" id="todo" placeholder="Enter your micro goals">
+                </div>
+                <button type="submit" class="btn btn-primary mt-4" (click)="save()">Save</button>
+            </form>
+        </div>
+
+        <div class="container mt-4">
+            <h1 class="mb-4">Things to do Today</h1>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">ToDo</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let Item of tlist">
+                        <td>{{Item.id}}</td>
+                        <td>{{Item.todo}}</td>
+                        <td>
+                            <button type="button" class="btn btn-success btn-sm" (click)="setUpdate(Item)">Edit</button>
+                            <button type="button" class="btn btn-danger btn-sm" (click)="setDelete(Item)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
